@@ -1,4 +1,5 @@
 function safetyChecker(x) {
+    console.log("Detection code is working")
     setTimeout(() => { 
        // let url = location.href.split(":")[0]; // Assuming security_key is a string
     
