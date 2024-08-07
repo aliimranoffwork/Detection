@@ -14,7 +14,7 @@ async function safetyChecker(x) {
 
         if (security_key === customer_security_key) {
             console.log("YES");
-            console.log(customer_security_key,security_key)
+            // console.log(customer_security_key,security_key)
             // console.log(security_key == customer_security_key)
         } else {
             document.querySelector('body').innerHTML = '';
