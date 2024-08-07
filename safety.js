@@ -5,7 +5,7 @@ async function safetyChecker(x) {
         await delay(2000);
 
         let url = x;
-        let security_key = "AL12008";
+        let security_key = "ALI2008";
 
         const response = await fetch(`https://raw.githubusercontent.com/aliimranoffwork/Detection/main/clients/${url}.txt`);
 
