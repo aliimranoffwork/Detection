@@ -1,25 +1,27 @@
-function safetyChecker(x) {
-    console.log("Detection code is working")
-    setTimeout(() => { 
-       // let url = location.href.split(":")[0]; // Assuming security_key is a string
-    
-       let url = x
-        let security_key = "AL12008"
-    
-        import(`./clients/${url}.js`) // Assuming the function name matches the file name
-            .then(module => {
-                // Use the imported function here
-                let customer_security_key = module.default(); // Assuming a default export
-                if (security_key !== customer_security_key) {
-                    document.querySelector('body').innerHTML = ''
-                } else {
-                    return
-                }
-            })
-            .catch(error => {
-                console.error("Import failed:", error);
-            });
-    }, 2000);
-}
+async function safetyChecker(x) {
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-export default safetyChecker
+    try {
+        await delay(2000);
+
+        let url = x;
+        let security_key = "AL12008";
+
+        const response = await fetch(`https://raw.githubusercontent.com/aliimranoffwork/Detection/main/clients/${url}.txt`);
+
+        let customer_security_key = await response.text();
+        customer_security_key = customer_security_key.trim()
+
+        if (security_key === customer_security_key) {
+            console.log("YES");
+            // console.log(`CustomerKey = ${customer_security_key.length}`,`SecKey = ${security_key.length}`)
+            // console.log(security_key == customer_security_key)
+        } else {
+            document.querySelector('body').innerHTML = '';
+            // console.log(`CustomerKey = ${customer_security_key.length}`,`SecKey = ${security_key.length}`)
+            // console.log(security_key == customer_security_key)
+        }
+    } catch (error) {
+        console.error("Request failed:", error);
+    }
+}
