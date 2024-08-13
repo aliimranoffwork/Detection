@@ -2,7 +2,7 @@ async function safetyChecker(x) {
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     try {
-        await delay(2000);
+        await delay(5000);
 
         let url = x;
         let security_key = "ALI2008";
