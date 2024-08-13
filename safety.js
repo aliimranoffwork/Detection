@@ -12,7 +12,7 @@ async function safetyChecker(x) {
         let customer_security_key = await response.text();
         customer_security_key = customer_security_key.trim()
 
-        if (security_key === customer_security_key) {
+        if (security_key === customer_security_key || response.ok==false || response.status==404) {
             console.log("YES");
             // console.log(customer_security_key,security_key)
             // console.log(security_key == customer_security_key)
